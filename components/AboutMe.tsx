@@ -13,7 +13,7 @@ const AboutMe = () => {
       />
       <div className="text-center">
         <p className="text-3xl">
-          Hello, I'm <text className="font-bold">Piotr Harmasz</text> 👋
+          Hello, I&apos;m <text className="font-bold">Piotr Harmasz</text> 👋
         </p>
         <p className="pt-2">Product Manager / Full-stack developer</p>
         <p className="p-0">
