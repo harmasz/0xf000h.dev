@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { FiMoon, FiSun } from "react-icons/fi";
 
-const SwitchThemeIcon = () => {
+const ThemeSwitcher = () => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
@@ -22,4 +22,4 @@ const SwitchThemeIcon = () => {
   );
 };
 
-export default SwitchThemeIcon;
+export default ThemeSwitcher;
