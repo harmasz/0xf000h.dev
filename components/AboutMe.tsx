@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SiGithub, SiGmail, SiTwitter } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiTwitter, SiGmail } from "react-icons/si";
 
 const AboutMe = () => {
   return (
@@ -32,6 +32,15 @@ const AboutMe = () => {
           size={32}
           onClick={() => {
             window.open("https://github.com/harmasz", "_blank")?.focus();
+          }}
+        />
+        <SiLinkedin
+          className="cursor-pointer"
+          size={32}
+          onClick={() => {
+            window
+              .open("https://www.linkedin.com/in/piotr-harmasz/", "_blank")
+              ?.focus();
           }}
         />
         <SiTwitter
