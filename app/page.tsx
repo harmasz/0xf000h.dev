@@ -395,8 +395,8 @@ export default function HomePage() {
 
         <footer className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p className="font-reading">
-            &copy; {currentYear} {siteConfig.name}. Personal site rebuild in
-            progress.
+            &copy; {currentYear} {siteConfig.name}. Personal site of Piotr
+            Harmasz.
           </p>
           <a
             className="interactive-underline font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors hover:text-foreground"

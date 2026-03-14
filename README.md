@@ -1,12 +1,12 @@
-# 0xf000h-v2
+# 0xf000h.dev
 
-Fresh rebuild of [0xf000h.dev](https://0xf000h.dev).
+Source for [0xf000h.dev](https://0xf000h.dev).
 
-This repository is the clean-slate v2 of the personal site. It replaces an older Next.js site previously deployed on Vercel, but it is intentionally not a direct port. The goal is to rebuild the site from first principles, with clearer structure, tighter scope, and better long-term maintainability.
+This repository contains the current personal site. It replaced the previous version and now serves as the canonical codebase for 0xf000h.dev, with an emphasis on clear structure, tight scope, and long-term maintainability.
 
 ## Goals
 
-- Rebuild the site deliberately instead of copying the previous implementation.
+- Continue improving the site deliberately instead of carrying forward legacy implementation choices.
 - Keep product, design, and branding decisions explicit and intentional.
 - Optimize for maintainable code, simple architecture, and small reviewable changes.
 - Prepare the project for deployment on Vercel without locking in the final stack too early.
@@ -29,7 +29,7 @@ This repository is the clean-slate v2 of the personal site. It replaces an older
 
 - Use conventional commits.
 - Use descriptive branch names such as `docs/*`, `feat/*`, and `chore/*`.
-- Keep the first PR small and reviewable.
+- Keep changes small and reviewable.
 
 ## Current Stack
 
