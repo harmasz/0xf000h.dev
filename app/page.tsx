@@ -7,6 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { CursorGlow } from "@/components/cursor-glow";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site";
 
@@ -151,15 +152,21 @@ export default function HomePage() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <main className="min-h-screen py-[var(--space-section)]" id="top">
-      <div className="page-frame space-y-16 sm:space-y-20 lg:space-y-24">
+    <main className="min-h-screen overflow-hidden py-[var(--space-section)]" id="top">
+      <CursorGlow />
+
+      <div className="page-frame relative z-10 space-y-16 sm:space-y-20 lg:space-y-24">
         <header className="flex items-center justify-between gap-6">
-          <nav aria-label="Primary">
+          <nav
+            aria-label="Primary"
+            className="motion-reveal"
+            style={{ animationDelay: "40ms" }}
+          >
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {navigationItems.map((item) => (
                 <li key={item.href}>
                   <a
-                    className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
+                    className="interactive-underline font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
                     href={item.href}
                   >
                     {item.label}
@@ -169,161 +176,179 @@ export default function HomePage() {
             </ul>
           </nav>
 
-          <ThemeToggle />
+          <div
+            className="motion-reveal"
+            style={{ animationDelay: "90ms" }}
+          >
+            <ThemeToggle />
+          </div>
         </header>
 
-          <section
-            aria-labelledby="home-heading"
-            className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] md:items-center md:gap-12 lg:gap-16"
-          >
-            <div className="space-y-7">
-              <div className="space-y-4">
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-accent">
-                  Piotr Harmasz
-                </p>
-
-                <div className="space-y-2">
-                  <h1
-                    className="max-w-[13ch] text-[clamp(2.3rem,1.85rem+1.9vw,3.8rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-foreground"
-                    id="home-heading"
-                  >
-                    Product Lead with a full-stack builder mindset.
-                  </h1>
-                </div>
-
-                <p className="font-reading max-w-2xl text-[length:var(--text-lede)] leading-[1.9] text-muted-foreground">
-                  I work across product thinking, systems, and implementation.
-                  This rebuild is a quieter front page for selected work,
-                  previous experience, and whatever deserves more space next.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-5">
-                {heroMeta.map((item) => (
-                  <div className="flex items-center gap-2.5" key={item.label}>
-                    <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
-                      {item.label}
-                    </span>
-                    <span className="font-reading text-sm leading-6 text-foreground sm:text-base">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <figure className="mx-auto w-full max-w-[17rem] md:mx-0 md:justify-self-end lg:max-w-[18.5rem]">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface-strong shadow-[var(--shadow-panel)]">
-                <Image
-                  alt="Piotr Harmasz speaking at a podium"
-                  className="object-cover object-[50%_24%]"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 15rem, 72vw"
-                  src="/profile/me-hero.jpg"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-background/28 via-transparent to-transparent" />
-                <div className="absolute inset-0 ring-1 ring-border/55 ring-inset" />
-              </div>
-            </figure>
-          </section>
-
-          <section
-            aria-labelledby="work-heading"
-            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
-            id="work"
-          >
-            <SectionHeading
-              description="Previous experience organized as the kinds of work I tend to move between: product direction, shipping software, and smaller experiments that sharpen both."
-              eyebrow="Work"
-              id="work-heading"
-              title="Previous experience across product, engineering, and the space between."
-            />
-
-            <div className="divide-y divide-border/90 border-t border-border/90">
-              {experienceItems.map((item) => (
-                <ExperienceRow item={item} key={`${item.role}-${item.organization}`} />
-              ))}
-            </div>
-          </section>
-
-          <section
-            aria-labelledby="about-heading"
-            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
-            id="about"
-          >
-            <SectionHeading
-              description="A short note on what the site is for and how the work tends to connect."
-              eyebrow="About"
-              id="about-heading"
-              title="I care about product judgment that stays close to the build."
-            />
-
-            <div className="max-w-3xl space-y-5">
-              <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
-                The work I tend to enjoy sits at the point where product
-                thinking, interface quality, and implementation detail start to
-                reinforce each other. Strategy matters, but so does knowing what
-                the thing actually becomes once it is built.
+        <section
+          aria-labelledby="home-heading"
+          className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] md:items-center md:gap-12 lg:gap-16"
+        >
+          <div className="space-y-7">
+            <div className="space-y-4">
+              <p
+                className="motion-reveal font-mono text-[0.68rem] uppercase tracking-[0.18em] text-accent"
+                style={{ animationDelay: "130ms" }}
+              >
+                Piotr Harmasz
               </p>
 
-              <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
-                This site is being rebuilt from that perspective: minimal,
-                practical, and structured enough to evolve without turning into
-                a polished template before the content earns it.
-              </p>
-            </div>
-          </section>
-
-          <section
-            aria-labelledby="contact-heading"
-            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
-            id="contact"
-          >
-            <SectionHeading
-              description="The easiest ways to get in touch or find the rest of my work online."
-              eyebrow="Contact"
-              id="contact-heading"
-              title="Reach out where it makes the most sense."
-            />
-
-            <div className="max-w-2xl divide-y divide-border/90 border-t border-border/90">
-              {contactItems.map((item) => (
-                <a
-                  className="group flex items-start gap-4 py-5 text-muted-foreground transition-colors hover:text-foreground"
-                  href={item.href}
-                  key={item.label}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
+              <div className="space-y-2">
+                <h1
+                  className="motion-reveal max-w-[13ch] text-[clamp(2.3rem,1.85rem+1.9vw,3.8rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-foreground"
+                  id="home-heading"
+                  style={{ animationDelay: "180ms" }}
                 >
-                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-                    <item.icon aria-hidden="true" className="h-4 w-4" />
+                  Product Lead with a full-stack builder mindset.
+                </h1>
+              </div>
+
+              <p
+                className="motion-reveal font-reading max-w-2xl text-[length:var(--text-lede)] leading-[1.9] text-muted-foreground"
+                style={{ animationDelay: "240ms" }}
+              >
+                I work across product thinking, systems, and implementation.
+                This rebuild is a quieter front page for selected work,
+                previous experience, and whatever deserves more space next.
+              </p>
+            </div>
+
+            <div
+              className="motion-reveal flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-5"
+              style={{ animationDelay: "300ms" }}
+            >
+              {heroMeta.map((item) => (
+                <div className="flex items-center gap-2.5" key={item.label}>
+                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
+                    {item.label}
                   </span>
-                  <span className="space-y-1">
-                    <span className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-muted-foreground">
-                      {item.label}
-                    </span>
-                    <span className="block font-reading text-sm leading-7 text-foreground sm:text-base">
-                      {item.value}
-                    </span>
+                  <span className="font-reading text-sm leading-6 text-foreground sm:text-base">
+                    {item.value}
                   </span>
-                </a>
+                </div>
               ))}
             </div>
-          </section>
+          </div>
 
-          <footer className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-reading">
-              &copy; {currentYear} {siteConfig.name}. Personal site rebuild in
-              progress.
+          <figure
+            className="motion-reveal motion-reveal-figure mx-auto w-full max-w-[17rem] md:mx-0 md:justify-self-end lg:max-w-[18.5rem]"
+            style={{ animationDelay: "220ms" }}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface-strong shadow-[var(--shadow-panel)]">
+              <Image
+                alt="Piotr Harmasz speaking at a podium"
+                className="object-cover object-[50%_24%]"
+                fill
+                priority
+                sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 15rem, 72vw"
+                src="/profile/me-hero.jpg"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-background/28 via-transparent to-transparent" />
+              <div className="absolute inset-0 ring-1 ring-border/55 ring-inset" />
+            </div>
+          </figure>
+        </section>
+
+        <section
+          aria-labelledby="work-heading"
+          className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+          id="work"
+        >
+          <SectionHeading
+            description="Previous experience organized as the kinds of work I tend to move between: product direction, shipping software, and smaller experiments that sharpen both."
+            eyebrow="Work"
+            id="work-heading"
+            title="Previous experience across product, engineering, and the space between."
+          />
+
+          <div className="divide-y divide-border/90 border-t border-border/90">
+            {experienceItems.map((item) => (
+              <ExperienceRow item={item} key={`${item.role}-${item.organization}`} />
+            ))}
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="about-heading"
+          className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+          id="about"
+        >
+          <SectionHeading
+            description="A short note on what the site is for and how the work tends to connect."
+            eyebrow="About"
+            id="about-heading"
+            title="I care about product judgment that stays close to the build."
+          />
+
+          <div className="max-w-3xl space-y-5">
+            <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
+              The work I tend to enjoy sits at the point where product
+              thinking, interface quality, and implementation detail start to
+              reinforce each other. Strategy matters, but so does knowing what
+              the thing actually becomes once it is built.
             </p>
-            <a
-              className="font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors hover:text-foreground"
-              href="#top"
-            >
-              Return to top
-            </a>
-          </footer>
+
+            <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
+              This site is being rebuilt from that perspective: minimal,
+              practical, and structured enough to evolve without turning into a
+              polished template before the content earns it.
+            </p>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="contact-heading"
+          className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+          id="contact"
+        >
+          <SectionHeading
+            description="The easiest ways to get in touch or find the rest of my work online."
+            eyebrow="Contact"
+            id="contact-heading"
+            title="Reach out where it makes the most sense."
+          />
+
+          <div className="max-w-2xl divide-y divide-border/90 border-t border-border/90">
+            {contactItems.map((item) => (
+              <a
+                className="contact-link group flex items-start gap-4 py-5 text-muted-foreground transition-colors hover:text-foreground"
+                href={item.href}
+                key={item.label}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+              >
+                <span className="contact-link-icon mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+                  <item.icon aria-hidden="true" className="h-4 w-4" />
+                </span>
+                <span className="flex min-w-0 flex-col gap-1">
+                  <span className="block font-mono text-[0.66rem] uppercase tracking-[0.16em] text-muted-foreground">
+                    {item.label}
+                  </span>
+                  <span className="contact-link-value font-reading text-sm leading-7 text-foreground sm:text-base">
+                    {item.value}
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <footer className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-reading">
+            &copy; {currentYear} {siteConfig.name}. Personal site rebuild in
+            progress.
+          </p>
+          <a
+            className="interactive-underline font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors hover:text-foreground"
+            href="#top"
+          >
+            Return to top
+          </a>
+        </footer>
       </div>
     </main>
   );

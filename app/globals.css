@@ -96,6 +96,7 @@ body {
 
 main {
   position: relative;
+  isolation: isolate;
 }
 
 main::before {
@@ -109,6 +110,7 @@ main::before {
   content: "";
   mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.22), transparent 74%);
   pointer-events: none;
+  z-index: 1;
 }
 
 h1,
@@ -129,6 +131,158 @@ p {
 
 .font-reading {
   font-family: var(--font-body), sans-serif;
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: clamp(28rem, 42vw, 40rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--accent) 9%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 5%, transparent) 30%,
+    transparent 74%
+  );
+  filter: blur(36px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(50vw, 22vh, 0) translate3d(-50%, -50%, 0);
+  transition: opacity 220ms ease;
+  will-change: transform, opacity;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: reveal-enter 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.motion-reveal-figure {
+  animation-name: reveal-enter-figure;
+  transform: translateY(16px) scale(0.985);
+}
+
+.interactive-underline,
+.contact-link-value {
+  display: inline-block;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 0.08em);
+  background-size: 0 1px;
+}
+
+.interactive-underline {
+  transition:
+    color 180ms ease,
+    background-size 220ms ease,
+    transform 180ms ease;
+}
+
+.contact-link {
+  transition:
+    color 180ms ease,
+    transform 220ms ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  transform: translateX(1px);
+}
+
+.contact-link-icon {
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 220ms ease;
+}
+
+.contact-link-value {
+  transition: background-size 220ms ease;
+}
+
+.contact-link:hover .contact-link-icon,
+.contact-link:focus-visible .contact-link-icon {
+  transform: translateY(-1px);
+}
+
+.interactive-underline:hover,
+.interactive-underline:focus-visible,
+.contact-link:hover .contact-link-value,
+.contact-link:focus-visible .contact-link-value {
+  background-size: 100% 1px;
+}
+
+.interactive-underline:hover,
+.interactive-underline:focus-visible {
+  transform: translateY(-1px);
+}
+
+@keyframes reveal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-enter-figure {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+
+  .motion-reveal,
+  .motion-reveal-figure {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .interactive-underline,
+  .contact-link,
+  .contact-link-icon,
+  .contact-link-value {
+    transition: none;
+  }
+
+  .interactive-underline:hover,
+  .interactive-underline:focus-visible,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .contact-link:hover .contact-link-icon,
+  .contact-link:focus-visible .contact-link-icon {
+    transform: none;
+  }
 }
 
 @utility page-frame {
