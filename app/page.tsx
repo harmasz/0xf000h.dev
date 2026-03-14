@@ -1,4 +1,11 @@
 import Image from "next/image";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  type LucideIcon,
+} from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site";
@@ -6,6 +13,13 @@ import { siteConfig } from "@/lib/site";
 type NavigationItem = Readonly<{
   label: string;
   href: `#${string}`;
+}>;
+
+type ContactItem = Readonly<{
+  icon: LucideIcon;
+  label: string;
+  href: string;
+  value: string;
 }>;
 
 type HeroMetaItem = Readonly<{
@@ -23,6 +37,34 @@ type ExperienceItem = Readonly<{
 const navigationItems: ReadonlyArray<NavigationItem> = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+const contactItems: ReadonlyArray<ContactItem> = [
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/harmasz",
+    value: "harmasz",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/piotr-harmasz/",
+    value: "piotr-harmasz",
+  },
+  {
+    icon: Twitter,
+    label: "Twitter",
+    href: "https://x.com/phrm0",
+    value: "@phrm0",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    href: "mailto:0xf000h@gmail.com",
+    value: "0xf000h@gmail.com",
+  },
 ];
 
 const heroMeta: ReadonlyArray<HeroMetaItem> = [
@@ -111,24 +153,24 @@ export default function HomePage() {
   return (
     <main className="min-h-screen py-[var(--space-section)]" id="top">
       <div className="page-frame space-y-16 sm:space-y-20 lg:space-y-24">
-          <header className="flex items-center justify-between gap-6">
-            <nav aria-label="Primary">
-              <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                {navigationItems.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+        <header className="flex items-center justify-between gap-6">
+          <nav aria-label="Primary">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {navigationItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <ThemeToggle />
-          </header>
+          <ThemeToggle />
+        </header>
 
           <section
             aria-labelledby="home-heading"
@@ -230,6 +272,43 @@ export default function HomePage() {
                 practical, and structured enough to evolve without turning into
                 a polished template before the content earns it.
               </p>
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="contact-heading"
+            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+            id="contact"
+          >
+            <SectionHeading
+              description="The easiest ways to get in touch or find the rest of my work online."
+              eyebrow="Contact"
+              id="contact-heading"
+              title="Reach out where it makes the most sense."
+            />
+
+            <div className="max-w-2xl divide-y divide-border/90 border-t border-border/90">
+              {contactItems.map((item) => (
+                <a
+                  className="group flex items-start gap-4 py-5 text-muted-foreground transition-colors hover:text-foreground"
+                  href={item.href}
+                  key={item.label}
+                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                >
+                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+                    <item.icon aria-hidden="true" className="h-4 w-4" />
+                  </span>
+                  <span className="space-y-1">
+                    <span className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-muted-foreground">
+                      {item.label}
+                    </span>
+                    <span className="block font-reading text-sm leading-7 text-foreground sm:text-base">
+                      {item.value}
+                    </span>
+                  </span>
+                </a>
+              ))}
             </div>
           </section>
 
