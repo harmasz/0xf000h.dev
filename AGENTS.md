@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is a fresh rebuild of [0xf000h.dev](https://0xf000h.dev). Treat it as an intentionally new project, not a direct port of the previous site.
+This repository is the canonical source for [0xf000h.dev](https://0xf000h.dev). It replaced the previous site and should be treated as the current production codebase.
 
 ## Operating Principles
 
