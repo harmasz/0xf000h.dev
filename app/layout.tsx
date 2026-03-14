@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Sora } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site";
 
-const bodyFont = Sora({
+const bodyFont = Geist({
   subsets: ["latin"],
   variable: "--font-body",
 });
 
-const monoFont = IBM_Plex_Mono({
+const monoFont = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-code",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
