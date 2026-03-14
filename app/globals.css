@@ -167,22 +167,20 @@ p {
   transform: translateY(16px) scale(0.985);
 }
 
-.interactive-underline {
+.interactive-underline,
+.contact-link-value {
   display: inline-block;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: left calc(100% - 0.08em);
   background-size: 0 1px;
+}
+
+.interactive-underline {
   transition:
     color 180ms ease,
     background-size 220ms ease,
     transform 180ms ease;
-}
-
-.interactive-underline:hover,
-.interactive-underline:focus-visible {
-  background-size: 100% 1px;
-  transform: translateY(-1px);
 }
 
 .contact-link {
@@ -204,11 +202,6 @@ p {
 }
 
 .contact-link-value {
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: left calc(100% - 0.08em);
-  background-size: 0 1px;
   transition: background-size 220ms ease;
 }
 
@@ -217,9 +210,16 @@ p {
   transform: translateY(-1px);
 }
 
+.interactive-underline:hover,
+.interactive-underline:focus-visible,
 .contact-link:hover .contact-link-value,
 .contact-link:focus-visible .contact-link-value {
   background-size: 100% 1px;
+}
+
+.interactive-underline:hover,
+.interactive-underline:focus-visible {
+  transform: translateY(-1px);
 }
 
 @keyframes reveal-enter {

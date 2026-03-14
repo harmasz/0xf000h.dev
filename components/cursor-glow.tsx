@@ -49,13 +49,32 @@ export function CursorGlow() {
       let targetY = restingPosition.y;
       let currentX = restingPosition.x;
       let currentY = restingPosition.y;
-
-      const render = () => {
-        currentX += (targetX - currentX) * 0.08;
-        currentY += (targetY - currentY) * 0.08;
-
+      const applyPosition = () => {
         glow.style.opacity = "1";
         glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate3d(-50%, -50%, 0)`;
+      };
+
+      const ensureAnimation = () => {
+        if (frameId === 0) {
+          frameId = window.requestAnimationFrame(render);
+        }
+      };
+
+      const render = () => {
+        const deltaX = targetX - currentX;
+        const deltaY = targetY - currentY;
+
+        if (Math.abs(deltaX) < 0.1 && Math.abs(deltaY) < 0.1) {
+          currentX = targetX;
+          currentY = targetY;
+          applyPosition();
+          frameId = 0;
+          return;
+        }
+
+        currentX += deltaX * 0.08;
+        currentY += deltaY * 0.08;
+        applyPosition();
 
         frameId = window.requestAnimationFrame(render);
       };
@@ -71,6 +90,7 @@ export function CursorGlow() {
 
         targetX = event.clientX;
         targetY = event.clientY;
+        ensureAnimation();
       };
 
       const handleReset = () => {
@@ -78,7 +98,10 @@ export function CursorGlow() {
 
         targetX = nextRestingPosition.x;
         targetY = nextRestingPosition.y;
+        ensureAnimation();
       };
+
+      applyPosition();
 
       window.addEventListener("pointermove", handlePointerMove, {
         passive: true,
@@ -91,8 +114,6 @@ export function CursorGlow() {
         window.removeEventListener("blur", handleReset);
         window.removeEventListener("resize", handleReset);
       };
-
-      render();
     };
 
     const sync = () => {

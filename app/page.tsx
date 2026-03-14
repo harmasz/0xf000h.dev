@@ -152,10 +152,7 @@ export default function HomePage() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <main
-      className="relative isolate min-h-screen overflow-hidden py-[var(--space-section)]"
-      id="top"
-    >
+    <main className="min-h-screen overflow-hidden py-[var(--space-section)]" id="top">
       <CursorGlow />
 
       <div className="page-frame relative z-10 space-y-16 sm:space-y-20 lg:space-y-24">
