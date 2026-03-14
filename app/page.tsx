@@ -31,12 +31,18 @@ type HeroMetaItem = Readonly<{
 type ExperienceItem = Readonly<{
   role: string;
   organization: string;
-  period: string;
+  summary: string;
+  emphasizeOrganization?: boolean;
+}>;
+
+type HelpItem = Readonly<{
+  title: string;
   summary: string;
 }>;
 
 const navigationItems: ReadonlyArray<NavigationItem> = [
   { label: "Work", href: "#work" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -56,7 +62,7 @@ const contactItems: ReadonlyArray<ContactItem> = [
   },
   {
     icon: Twitter,
-    label: "Twitter",
+    label: "X",
     href: "https://x.com/phrm0",
     value: "@phrm0",
   },
@@ -69,31 +75,48 @@ const contactItems: ReadonlyArray<ContactItem> = [
 ];
 
 const heroMeta: ReadonlyArray<HeroMetaItem> = [
-  { label: "Role", value: "Product Lead / Full-stack developer" },
-  { label: "Base", value: "Wroclaw, Poland" },
+  { label: "Role", value: "Product Lead / Builder" },
+  { label: "Base", value: "Wrocław, Poland" },
+];
+
+const helpItems: ReadonlyArray<HelpItem> = [
+  {
+    title: "Sharper product direction",
+    summary:
+      "Turning broad goals into clearer bets, priorities, and execution paths.",
+  },
+  {
+    title: "Faster execution",
+    summary:
+      "Reducing friction between product and engineering so teams can move with more confidence.",
+  },
+  {
+    title: "Better growth foundations",
+    summary:
+      "Improving the product decisions and workflows that support retention, monetization, and recurring revenue.",
+  },
 ];
 
 const experienceItems: ReadonlyArray<ExperienceItem> = [
   {
-    role: "Product leadership",
-    organization: "Product-led software teams",
-    period: "Recent",
+    organization: "Prezly",
+    role: "Product Lead",
+    emphasizeOrganization: true,
     summary:
-      "Shaping product direction, aligning scope with business priorities, and keeping execution close enough to the work that decisions stay grounded.",
+      "Helping strengthen product direction, team process, and execution as the company scales.",
   },
   {
-    role: "Full-stack development",
-    organization: "Web platforms and internal tools",
-    period: "Ongoing",
+    organization: "Piwik PRO",
+    role: "Product, analytics, and AI-focused roles",
+    emphasizeOrganization: true,
     summary:
-      "Building across the stack when speed, clarity, or product quality benefits from tighter product and engineering feedback loops.",
+      "Worked across strategy, experimentation, and delivery in a complex SaaS environment, turning ambiguity into shipped improvements.",
   },
   {
     role: "Independent experiments",
-    organization: "Personal and side projects",
-    period: "Always",
+    organization: "Side projects and prototypes",
     summary:
-      "Using smaller builds to test interface ideas, workflow improvements, and technical directions before they earn a larger footprint.",
+      "Testing product ideas, AI workflows, and smaller tools before they become bigger commitments.",
   },
 ];
 
@@ -106,7 +129,7 @@ function SectionHeading({
   eyebrow: string;
   id: string;
   title: string;
-  description: string;
+  description?: string;
 }>) {
   return (
     <div className="max-w-2xl space-y-4">
@@ -119,29 +142,44 @@ function SectionHeading({
       >
         {title}
       </h2>
-      <p className="font-reading max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
-        {description}
-      </p>
+      {description ? (
+        <p className="font-reading max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }
 
 function ExperienceRow({ item }: Readonly<{ item: ExperienceItem }>) {
+  const headline = item.emphasizeOrganization ? item.organization : item.role;
+  const supporting = item.emphasizeOrganization ? item.role : item.organization;
+
   return (
     <article className="grid gap-5 py-7 sm:py-8 lg:grid-cols-[minmax(12rem,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
       <div className="space-y-2">
-        <p className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-muted-foreground">
-          {item.period}
-        </p>
         <h3 className="text-xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground">
-          {item.role}
+          {headline}
         </h3>
         <p className="font-reading text-sm leading-7 text-muted-foreground">
-          {item.organization}
+          {supporting}
         </p>
       </div>
 
       <p className="font-reading max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+        {item.summary}
+      </p>
+    </article>
+  );
+}
+
+function HelpCard({ item }: Readonly<{ item: HelpItem }>) {
+  return (
+    <article className="space-y-3 rounded-[1.4rem] border border-border bg-surface px-5 py-6 shadow-[var(--shadow-panel)] sm:px-6">
+      <h3 className="text-xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground">
+        {item.title}
+      </h3>
+      <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
         {item.summary}
       </p>
     </article>
@@ -194,16 +232,16 @@ export default function HomePage() {
                 className="motion-reveal font-mono text-[0.68rem] uppercase tracking-[0.18em] text-accent"
                 style={{ animationDelay: "130ms" }}
               >
-                Piotr Harmasz
+                PIOTR HARMASZ
               </p>
 
               <div className="space-y-2">
                 <h1
-                  className="motion-reveal max-w-[13ch] text-[clamp(2.3rem,1.85rem+1.9vw,3.8rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-foreground"
+                  className="motion-reveal max-w-[15ch] text-[clamp(2.3rem,1.85rem+1.9vw,3.8rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-foreground"
                   id="home-heading"
                   style={{ animationDelay: "180ms" }}
                 >
-                  Product Lead with a full-stack builder mindset.
+                  I help SaaS companies turn product clarity into growth.
                 </h1>
               </div>
 
@@ -211,9 +249,9 @@ export default function HomePage() {
                 className="motion-reveal font-reading max-w-2xl text-[length:var(--text-lede)] leading-[1.9] text-muted-foreground"
                 style={{ animationDelay: "240ms" }}
               >
-                I work across product thinking, systems, and implementation.
-                This rebuild is a quieter front page for selected work,
-                previous experience, and whatever deserves more space next.
+                I work across product leadership, systems, and implementation
+                to help teams make better bets, ship with more focus, and build
+                products that support real business outcomes.
               </p>
             </div>
 
@@ -259,10 +297,29 @@ export default function HomePage() {
           id="work"
         >
           <SectionHeading
-            description="Previous experience organized as the kinds of work I tend to move between: product direction, shipping software, and smaller experiments that sharpen both."
-            eyebrow="Work"
+            description="I usually work with companies that need stronger product direction, tighter delivery, and better systems for the next stage of scale."
+            eyebrow="How I Help"
             id="work-heading"
-            title="Previous experience across product, engineering, and the space between."
+            title="Product work that improves focus, execution, and growth."
+          />
+
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-3">
+            {helpItems.map((item) => (
+              <HelpCard item={item} key={item.title} />
+            ))}
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="portfolio-heading"
+          className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+          id="portfolio"
+        >
+          <SectionHeading
+            description=""
+            eyebrow="Portfolio"
+            id="portfolio-heading"
+            title="Selected experience"
           />
 
           <div className="divide-y divide-border/90 border-t border-border/90">
@@ -278,24 +335,23 @@ export default function HomePage() {
           id="about"
         >
           <SectionHeading
-            description="A short note on what the site is for and how the work tends to connect."
+            description=""
             eyebrow="About"
             id="about-heading"
-            title="I care about product judgment that stays close to the build."
+            title="I work best where strategy needs to become execution."
           />
 
           <div className="max-w-3xl space-y-5">
             <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
-              The work I tend to enjoy sits at the point where product
-              thinking, interface quality, and implementation detail start to
-              reinforce each other. Strategy matters, but so does knowing what
-              the thing actually becomes once it is built.
+              Companies rarely need more ideas. They need better judgment,
+              clearer priorities, and tighter feedback loops between product
+              decisions and what actually gets built.
             </p>
 
             <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
-              This site is being rebuilt from that perspective: minimal,
-              practical, and structured enough to evolve without turning into a
-              polished template before the content earns it.
+              That&apos;s the space I tend to operate in across product
+              leadership, software, analytics, and AI, helping teams move
+              faster without losing depth, and scale without losing focus.
             </p>
           </div>
         </section>
@@ -306,10 +362,10 @@ export default function HomePage() {
           id="contact"
         >
           <SectionHeading
-            description="The easiest ways to get in touch or find the rest of my work online."
+            description="Best reached by email. You can also find me on GitHub, LinkedIn, and X."
             eyebrow="Contact"
             id="contact-heading"
-            title="Reach out where it makes the most sense."
+            title="Interested in working together?"
           />
 
           <div className="max-w-2xl divide-y divide-border/90 border-t border-border/90">
