@@ -1,5 +1,6 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -11,12 +12,20 @@ const themeOptions = [
   { label: "Dark", value: "dark" },
 ] as const;
 
+const emptySubscribe = () => () => {};
+
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
-  const activeTheme = theme ?? "system";
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+
+  const activeTheme = mounted ? (theme ?? "system") : null;
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-surface/90 p-1 shadow-[var(--shadow-soft)]">
+    <div className="inline-flex items-center gap-2 rounded-full border border-border/55 bg-surface/48 p-1 shadow-[0_16px_34px_-30px_rgb(15_23_42_/_0.16)] backdrop-blur-[2px] dark:shadow-[0_18px_40px_-30px_rgb(2_6_23_/_0.48)]">
       <div
         aria-label="Theme switcher"
         className="inline-flex items-center gap-1"
