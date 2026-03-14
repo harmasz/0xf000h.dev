@@ -98,14 +98,14 @@ const helpItems: ReadonlyArray<HelpItem> = [
 
 const experienceItems: ReadonlyArray<ExperienceItem> = [
   {
-    role: "Product Lead",
     organization: "Prezly",
+    role: "Product Lead",
     summary:
       "Helping strengthen product direction, team process, and execution as the company scales.",
   },
   {
-    role: "Product, analytics, and AI-focused roles",
     organization: "Piwik PRO",
+    role: "Product, analytics, and AI-focused roles",
     summary:
       "Worked across strategy, experimentation, and delivery in a complex SaaS environment, turning ambiguity into shipped improvements.",
   },
