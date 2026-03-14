@@ -32,6 +32,7 @@ type ExperienceItem = Readonly<{
   role: string;
   organization: string;
   summary: string;
+  emphasizeOrganization?: boolean;
 }>;
 
 type HelpItem = Readonly<{
@@ -100,12 +101,14 @@ const experienceItems: ReadonlyArray<ExperienceItem> = [
   {
     organization: "Prezly",
     role: "Product Lead",
+    emphasizeOrganization: true,
     summary:
       "Helping strengthen product direction, team process, and execution as the company scales.",
   },
   {
     organization: "Piwik PRO",
     role: "Product, analytics, and AI-focused roles",
+    emphasizeOrganization: true,
     summary:
       "Worked across strategy, experimentation, and delivery in a complex SaaS environment, turning ambiguity into shipped improvements.",
   },
@@ -149,14 +152,17 @@ function SectionHeading({
 }
 
 function ExperienceRow({ item }: Readonly<{ item: ExperienceItem }>) {
+  const headline = item.emphasizeOrganization ? item.organization : item.role;
+  const supporting = item.emphasizeOrganization ? item.role : item.organization;
+
   return (
     <article className="grid gap-5 py-7 sm:py-8 lg:grid-cols-[minmax(12rem,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
       <div className="space-y-2">
         <h3 className="text-xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground">
-          {item.role}
+          {headline}
         </h3>
         <p className="font-reading text-sm leading-7 text-muted-foreground">
-          {item.organization}
+          {supporting}
         </p>
       </div>
 
