@@ -30,3 +30,21 @@ This repository is the clean-slate v2 of the personal site. It replaces an older
 - Use conventional commits.
 - Use descriptive branch names such as `docs/*`, `feat/*`, and `chore/*`.
 - Keep the first PR small and reviewable.
+
+## Current Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- ESLint
+- pnpm
+
+## Local Development
+
+1. Install dependencies with `pnpm install`.
+2. Start the development server with `pnpm dev`.
+3. Run `pnpm lint` before opening a PR.
+4. Validate the production build with `pnpm build`.
+
+The project is configured for standard Next.js deployment on Vercel without
+additional platform-specific files.
