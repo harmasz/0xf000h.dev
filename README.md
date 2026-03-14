@@ -1,50 +1,38 @@
 # 0xf000h.dev
 
-Source for [0xf000h.dev](https://0xf000h.dev).
+<p align="center">
+  Personal site for Piotr Harmasz.
+</p>
 
-This repository contains the current personal site. It replaced the previous version and now serves as the canonical codebase for 0xf000h.dev, with an emphasis on clear structure, tight scope, and long-term maintainability.
+<p align="center">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=nextdotjs&logoColor=white">
+  <img alt="React" src="https://img.shields.io/badge/React-19-111111?style=for-the-badge&logo=react&logoColor=61DAFB">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-111111?style=for-the-badge&logo=typescript&logoColor=3178C6">
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-4-111111?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8">
+  <img alt="pnpm" src="https://img.shields.io/badge/pnpm-10-111111?style=for-the-badge&logo=pnpm&logoColor=F69220">
+</p>
 
-## Goals
+![Homepage screenshot](./screenshot.png)
 
-- Continue improving the site deliberately instead of carrying forward legacy implementation choices.
-- Keep product, design, and branding decisions explicit and intentional.
-- Optimize for maintainable code, simple architecture, and small reviewable changes.
-- Prepare the project for deployment on Vercel without locking in the final stack too early.
+## Overview
 
-## Collaboration
-
-- The repository owner is the designer and product owner.
-- Implementation work should follow the owner's direction on product, design, content, and branding.
-- Changes should be incremental, easy to review, and clearly scoped to the requested task.
-- Assumptions and tradeoffs should be documented explicitly when they affect implementation.
-
-## Workflow
-
-- Start small and build the project in thin vertical slices.
-- Prefer discussion and documentation before introducing framework or architecture commitments.
-- Keep pull requests focused on one concern at a time.
-- Avoid unrelated refactors while the project foundation is still being established.
-
-## Git Conventions
-
-- Use conventional commits.
-- Use descriptive branch names such as `docs/*`, `feat/*`, and `chore/*`.
-- Keep changes small and reviewable.
-
-## Current Stack
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS v4
-- ESLint
-- pnpm
+This repository contains the current production codebase for [0xf000h.dev](https://0xf000h.dev), a personal site built with Next.js App Router, TypeScript, and Tailwind CSS.
 
 ## Local Development
 
-1. Install dependencies with `pnpm install`.
-2. Start the development server with `pnpm dev`.
-3. Run `pnpm lint` before opening a PR.
-4. Validate the production build with `pnpm build`.
+```bash
+pnpm install
+pnpm dev
+```
 
-The project is configured for standard Next.js deployment on Vercel without
-additional platform-specific files.
+Useful project commands:
+
+- `pnpm dev` starts the local development server.
+- `pnpm lint` runs ESLint.
+- `pnpm build` validates the production build.
+- `pnpm start` serves the production build locally.
+
+## Notes
+
+- Deployments are intended for Vercel.
+- Agent workflow and repository collaboration rules live in [AGENTS.md](./AGENTS.md).
