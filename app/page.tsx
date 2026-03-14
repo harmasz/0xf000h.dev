@@ -1,77 +1,250 @@
-import { PageShell } from "@/components/page-shell";
+import Image from "next/image";
+
 import { ThemeToggle } from "@/components/theme-toggle";
+import { siteConfig } from "@/lib/site";
+
+type NavigationItem = Readonly<{
+  label: string;
+  href: `#${string}`;
+}>;
+
+type HeroMetaItem = Readonly<{
+  label: string;
+  value: string;
+}>;
+
+type ExperienceItem = Readonly<{
+  role: string;
+  organization: string;
+  period: string;
+  summary: string;
+}>;
+
+const navigationItems: ReadonlyArray<NavigationItem> = [
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+];
+
+const heroMeta: ReadonlyArray<HeroMetaItem> = [
+  { label: "Role", value: "Product Lead / Full-stack developer" },
+  { label: "Base", value: "Wroclaw, Poland" },
+];
+
+const experienceItems: ReadonlyArray<ExperienceItem> = [
+  {
+    role: "Product leadership",
+    organization: "Product-led software teams",
+    period: "Recent",
+    summary:
+      "Shaping product direction, aligning scope with business priorities, and keeping execution close enough to the work that decisions stay grounded.",
+  },
+  {
+    role: "Full-stack development",
+    organization: "Web platforms and internal tools",
+    period: "Ongoing",
+    summary:
+      "Building across the stack when speed, clarity, or product quality benefits from tighter product and engineering feedback loops.",
+  },
+  {
+    role: "Independent experiments",
+    organization: "Personal and side projects",
+    period: "Always",
+    summary:
+      "Using smaller builds to test interface ideas, workflow improvements, and technical directions before they earn a larger footprint.",
+  },
+];
+
+function SectionHeading({
+  eyebrow,
+  id,
+  title,
+  description,
+}: Readonly<{
+  eyebrow: string;
+  id: string;
+  title: string;
+  description: string;
+}>) {
+  return (
+    <div className="max-w-2xl space-y-4">
+      <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-accent">
+        {eyebrow}
+      </p>
+      <h2
+        className="max-w-xl text-[clamp(1.7rem,1.45rem+0.8vw,2.35rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-foreground"
+        id={id}
+      >
+        {title}
+      </h2>
+      <p className="font-reading max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function ExperienceRow({ item }: Readonly<{ item: ExperienceItem }>) {
+  return (
+    <article className="grid gap-5 py-7 sm:py-8 lg:grid-cols-[minmax(12rem,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
+      <div className="space-y-2">
+        <p className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-muted-foreground">
+          {item.period}
+        </p>
+        <h3 className="text-xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground">
+          {item.role}
+        </h3>
+        <p className="font-reading text-sm leading-7 text-muted-foreground">
+          {item.organization}
+        </p>
+      </div>
+
+      <p className="font-reading max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+        {item.summary}
+      </p>
+    </article>
+  );
+}
 
 export default function HomePage() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <main className="min-h-screen py-[var(--space-section)]">
-      <div className="page-frame flex min-h-[calc(100vh-(var(--space-section)*2))] flex-col justify-center gap-6 sm:gap-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="space-y-2">
-            <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
-              0xf000h.dev
-            </p>
-            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Foundation pass for the fresh rebuild: theme-aware tokens,
-              typography, and layout primitives before the final homepage takes
-              shape.
-            </p>
-          </div>
+    <main className="min-h-screen py-[var(--space-section)]" id="top">
+      <div className="page-frame space-y-16 sm:space-y-20 lg:space-y-24">
+          <header className="flex items-center justify-between gap-6">
+            <nav aria-label="Primary">
+              <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                {navigationItems.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <ThemeToggle />
-        </div>
+            <ThemeToggle />
+          </header>
 
-        <PageShell className="lg:pr-16">
-          <div className="relative z-10 grid gap-10">
+          <section
+            aria-labelledby="home-heading"
+            className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] md:items-center md:gap-12 lg:gap-16"
+          >
+            <div className="space-y-7">
+              <div className="space-y-4">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-accent">
+                  Piotr Harmasz
+                </p>
+
+                <div className="space-y-2">
+                  <h1
+                    className="max-w-[13ch] text-[clamp(2.3rem,1.85rem+1.9vw,3.8rem)] font-semibold leading-[1.04] tracking-[-0.05em] text-foreground"
+                    id="home-heading"
+                  >
+                    Product Lead with a full-stack builder mindset.
+                  </h1>
+                </div>
+
+                <p className="font-reading max-w-2xl text-[length:var(--text-lede)] leading-[1.9] text-muted-foreground">
+                  I work across product thinking, systems, and implementation.
+                  This rebuild is a quieter front page for selected work,
+                  previous experience, and whatever deserves more space next.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-5">
+                {heroMeta.map((item) => (
+                  <div className="flex items-center gap-2.5" key={item.label}>
+                    <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
+                      {item.label}
+                    </span>
+                    <span className="font-reading text-sm leading-6 text-foreground sm:text-base">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <figure className="mx-auto w-full max-w-[17rem] md:mx-0 md:justify-self-end lg:max-w-[18.5rem]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface-strong shadow-[var(--shadow-panel)]">
+                <Image
+                  alt="Piotr Harmasz speaking at a podium"
+                  className="object-cover object-[50%_24%]"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 15rem, 72vw"
+                  src="/profile/me-hero.jpg"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-background/28 via-transparent to-transparent" />
+                <div className="absolute inset-0 ring-1 ring-border/55 ring-inset" />
+              </div>
+            </figure>
+          </section>
+
+          <section
+            aria-labelledby="work-heading"
+            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+            id="work"
+          >
+            <SectionHeading
+              description="Previous experience organized as the kinds of work I tend to move between: product direction, shipping software, and smaller experiments that sharpen both."
+              eyebrow="Work"
+              id="work-heading"
+              title="Previous experience across product, engineering, and the space between."
+            />
+
+            <div className="divide-y divide-border/90 border-t border-border/90">
+              {experienceItems.map((item) => (
+                <ExperienceRow item={item} key={`${item.role}-${item.organization}`} />
+              ))}
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="about-heading"
+            className="scroll-mt-24 space-y-8 border-t border-border pt-12 sm:space-y-10 sm:pt-14"
+            id="about"
+          >
+            <SectionHeading
+              description="A short note on what the site is for and how the work tends to connect."
+              eyebrow="About"
+              id="about-heading"
+              title="I care about product judgment that stays close to the build."
+            />
+
             <div className="max-w-3xl space-y-5">
-              <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                Initial Design System
+              <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
+                The work I tend to enjoy sits at the point where product
+                thinking, interface quality, and implementation detail start to
+                reinforce each other. Strategy matters, but so does knowing what
+                the thing actually becomes once it is built.
               </p>
 
-              <h1 className="max-w-3xl font-display text-[clamp(2.9rem,1.9rem+4vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-foreground">
-                Minimal by intent, but no longer generic.
-              </h1>
-
-              <p className="max-w-2xl text-[length:var(--text-lede)] leading-[1.7] text-muted-foreground">
-                The site now has a stable visual language for color, type,
-                spacing, surfaces, and theme behavior. It is still a scaffold,
-                just one that is ready for design-heavy iteration.
+              <p className="font-reading text-sm leading-8 text-muted-foreground sm:text-base">
+                This site is being rebuilt from that perspective: minimal,
+                practical, and structured enough to evolve without turning into
+                a polished template before the content earns it.
               </p>
             </div>
+          </section>
 
-            <div className="grid gap-4 md:grid-cols-3">
-              <article className="rounded-[var(--radius-lg)] border border-border/80 bg-background/60 p-5">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground">
-                  Palette
-                </p>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Neutral base tones with a restrained accent, defined in light
-                  and dark tokens instead of ad hoc color classes.
-                </p>
-              </article>
-
-              <article className="rounded-[var(--radius-lg)] border border-border/80 bg-background/60 p-5">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground">
-                  Typography
-                </p>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Sora sets the interface tone, IBM Plex Mono handles utility
-                  text, and responsive type scales establish consistent rhythm.
-                </p>
-              </article>
-
-              <article className="rounded-[var(--radius-lg)] border border-border/80 bg-background/60 p-5">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground">
-                  Layout
-                </p>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Shared gutter, measure, radius, and surface rules now anchor
-                  the scaffold without committing to the final homepage
-                  composition.
-                </p>
-              </article>
-            </div>
-          </div>
-        </PageShell>
+          <footer className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-reading">
+              &copy; {currentYear} {siteConfig.name}. Personal site rebuild in
+              progress.
+            </p>
+            <a
+              className="font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors hover:text-foreground"
+              href="#top"
+            >
+              Return to top
+            </a>
+          </footer>
       </div>
     </main>
   );
