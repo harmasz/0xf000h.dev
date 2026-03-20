@@ -1,291 +1,311 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(0.982 0.003 255);
-  --foreground: oklch(0.19 0.01 255);
-  --muted: oklch(0.955 0.003 255);
-  --muted-foreground: oklch(0.48 0.01 255);
-  --surface: oklch(0.992 0.002 255 / 0.88);
-  --surface-strong: oklch(0.968 0.003 255 / 0.95);
-  --border: oklch(0.86 0.006 255 / 0.88);
-  --border-strong: oklch(0.72 0.012 255 / 0.94);
-  --accent: oklch(0.53 0.1 232);
-  --accent-foreground: oklch(0.982 0.003 255);
-  --ring: oklch(0.63 0.09 232 / 0.46);
-  --grid: oklch(0.9 0.004 255 / 0.42);
+	--background: oklch(0.982 0.003 255);
+	--foreground: oklch(0.19 0.01 255);
+	--muted: oklch(0.955 0.003 255);
+	--muted-foreground: oklch(0.48 0.01 255);
+	--surface: oklch(0.992 0.002 255 / 0.88);
+	--surface-strong: oklch(0.968 0.003 255 / 0.95);
+	--border: oklch(0.86 0.006 255 / 0.88);
+	--border-strong: oklch(0.72 0.012 255 / 0.94);
+	--accent: oklch(0.53 0.1 232);
+	--accent-foreground: oklch(0.982 0.003 255);
+	--ring: oklch(0.63 0.09 232 / 0.46);
+	--grid: oklch(0.9 0.004 255 / 0.42);
 
-  --text-lede: clamp(1.05rem, 0.98rem + 0.28vw, 1.22rem);
-  --space-gutter: clamp(1.25rem, 0.85rem + 1.1vw, 2.5rem);
-  --space-section: clamp(4.5rem, 3.2rem + 3vw, 7rem);
-  --layout-content: 44rem;
-  --layout-wide: 78rem;
+	--text-lede: clamp(1.05rem, 0.98rem + 0.28vw, 1.22rem);
+	--space-gutter: clamp(1.25rem, 0.85rem + 1.1vw, 2.5rem);
+	--space-section: clamp(4.5rem, 3.2rem + 3vw, 7rem);
+	--layout-content: 44rem;
+	--layout-wide: 78rem;
 
-  --radius-sm: 0.3rem;
-  --radius-md: 0.65rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+	--radius-sm: 0.3rem;
+	--radius-md: 0.65rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
 
-  --shadow-soft: 0 18px 40px -28px rgb(15 23 42 / 0.18);
-  --shadow-panel: 0 28px 70px -42px rgb(15 23 42 / 0.14);
+	--shadow-soft: 0 18px 40px -28px rgb(15 23 42 / 0.18);
+	--shadow-panel: 0 28px 70px -42px rgb(15 23 42 / 0.14);
 
-  color-scheme: light;
+	color-scheme: light;
 }
 
 .dark {
-  --background: oklch(0.15 0.006 255);
-  --foreground: oklch(0.935 0.004 255);
-  --muted: oklch(0.185 0.005 255);
-  --muted-foreground: oklch(0.7 0.008 255);
-  --surface: oklch(0.19 0.006 255 / 0.88);
-  --surface-strong: oklch(0.225 0.006 255 / 0.96);
-  --border: oklch(0.31 0.008 255 / 0.92);
-  --border-strong: oklch(0.5 0.014 255 / 0.96);
-  --accent: oklch(0.72 0.085 232);
-  --accent-foreground: oklch(0.15 0.006 255);
-  --ring: oklch(0.72 0.08 232 / 0.48);
-  --grid: oklch(0.34 0.006 255 / 0.28);
+	--background: oklch(0.15 0.006 255);
+	--foreground: oklch(0.935 0.004 255);
+	--muted: oklch(0.185 0.005 255);
+	--muted-foreground: oklch(0.7 0.008 255);
+	--surface: oklch(0.19 0.006 255 / 0.88);
+	--surface-strong: oklch(0.225 0.006 255 / 0.96);
+	--border: oklch(0.31 0.008 255 / 0.92);
+	--border-strong: oklch(0.5 0.014 255 / 0.96);
+	--accent: oklch(0.72 0.085 232);
+	--accent-foreground: oklch(0.15 0.006 255);
+	--ring: oklch(0.72 0.08 232 / 0.48);
+	--grid: oklch(0.34 0.006 255 / 0.28);
 
-  --shadow-soft: 0 18px 40px -28px rgb(2 6 23 / 0.58);
-  --shadow-panel: 0 28px 72px -42px rgb(2 6 23 / 0.72);
+	--shadow-soft: 0 18px 40px -28px rgb(2 6 23 / 0.58);
+	--shadow-panel: 0 28px 72px -42px rgb(2 6 23 / 0.72);
 
-  color-scheme: dark;
+	color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-surface: var(--surface);
-  --color-surface-strong: var(--surface-strong);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-ring: var(--ring);
-  --color-grid: var(--grid);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-code);
-  --font-display: var(--font-body);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-surface: var(--surface);
+	--color-surface-strong: var(--surface-strong);
+	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-ring: var(--ring);
+	--color-grid: var(--grid);
+	--font-sans: var(--font-body);
+	--font-mono: var(--font-code);
+	--font-display: var(--font-body);
 }
 
 html {
-  scroll-behavior: smooth;
-  background: var(--background);
+	scroll-behavior: smooth;
+	background: var(--background);
 }
 
 * {
-  border-color: var(--border);
-  box-sizing: border-box;
+	border-color: var(--border);
+	box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, color-mix(in oklab, var(--accent) 7%, transparent) 0, transparent 28%),
-    linear-gradient(180deg, color-mix(in oklab, var(--surface) 28%, var(--background)) 0%, var(--background) 100%);
-  color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+	min-height: 100vh;
+	background:
+		radial-gradient(
+			circle at top left,
+			color-mix(in oklab, var(--accent) 7%, transparent) 0,
+			transparent 28%
+		),
+		linear-gradient(
+			180deg,
+			color-mix(in oklab, var(--surface) 28%, var(--background)) 0%,
+			var(--background) 100%
+		);
+	color: var(--foreground);
+	font-family: var(--font-body), sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 24%, transparent);
+	background: color-mix(in oklab, var(--accent) 24%, transparent);
 }
 
 main {
-  position: relative;
-  isolation: isolate;
+	position: relative;
+	isolation: isolate;
 }
 
 main::before {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, transparent 0, transparent calc(100% - 1px), var(--grid) calc(100% - 1px)),
-    linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), var(--grid) calc(100% - 1px));
-  background-position: center top;
-  background-size: 100% 100%, 100% 9rem;
-  content: "";
-  mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.22), transparent 74%);
-  pointer-events: none;
-  z-index: 1;
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(
+			to right,
+			transparent 0,
+			transparent calc(100% - 1px),
+			var(--grid) calc(100% - 1px)
+		),
+		linear-gradient(
+			to bottom,
+			transparent 0,
+			transparent calc(100% - 1px),
+			var(--grid) calc(100% - 1px)
+		);
+	background-position: center top;
+	background-size:
+		100% 100%,
+		100% 9rem;
+	content: "";
+	mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.22), transparent 74%);
+	pointer-events: none;
+	z-index: 1;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  text-wrap: balance;
+	text-wrap: balance;
 }
 
 p {
-  text-wrap: pretty;
+	text-wrap: pretty;
 }
 
 :focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+	outline: 2px solid var(--ring);
+	outline-offset: 2px;
 }
 
 .font-reading {
-  font-family: var(--font-body), sans-serif;
+	font-family: var(--font-body), sans-serif;
 }
 
 .cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: clamp(28rem, 42vw, 40rem);
-  aspect-ratio: 1;
-  border-radius: 999px;
-  background: radial-gradient(
-    circle,
-    color-mix(in oklab, var(--accent) 9%, transparent) 0%,
-    color-mix(in oklab, var(--accent) 5%, transparent) 30%,
-    transparent 74%
-  );
-  filter: blur(36px);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(50vw, 22vh, 0) translate3d(-50%, -50%, 0);
-  transition: opacity 220ms ease;
-  will-change: transform, opacity;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: clamp(28rem, 42vw, 40rem);
+	aspect-ratio: 1;
+	border-radius: 999px;
+	background: radial-gradient(
+		circle,
+		color-mix(in oklab, var(--accent) 9%, transparent) 0%,
+		color-mix(in oklab, var(--accent) 5%, transparent) 30%,
+		transparent 74%
+	);
+	filter: blur(36px);
+	opacity: 0;
+	pointer-events: none;
+	transform: translate3d(50vw, 22vh, 0) translate3d(-50%, -50%, 0);
+	transition: opacity 220ms ease;
+	will-change: transform, opacity;
 }
 
 .motion-reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: reveal-enter 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: transform, opacity;
+	opacity: 0;
+	transform: translateY(12px);
+	animation: reveal-enter 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: transform, opacity;
 }
 
 .motion-reveal-figure {
-  animation-name: reveal-enter-figure;
-  transform: translateY(16px) scale(0.985);
+	animation-name: reveal-enter-figure;
+	transform: translateY(16px) scale(0.985);
 }
 
 .interactive-underline,
 .contact-link-value {
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: left calc(100% - 0.08em);
-  background-size: 0 1px;
+	display: inline-block;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-repeat: no-repeat;
+	background-position: left calc(100% - 0.08em);
+	background-size: 0 1px;
 }
 
 .interactive-underline {
-  transition:
-    color 180ms ease,
-    background-size 220ms ease,
-    transform 180ms ease;
+	transition:
+		color 180ms ease,
+		background-size 220ms ease,
+		transform 180ms ease;
 }
 
 .contact-link {
-  transition:
-    color 180ms ease,
-    transform 220ms ease;
+	transition:
+		color 180ms ease,
+		transform 220ms ease;
 }
 
 .contact-link:hover,
 .contact-link:focus-visible {
-  transform: translateX(1px);
+	transform: translateX(1px);
 }
 
 .contact-link-icon {
-  transition:
-    color 180ms ease,
-    border-color 180ms ease,
-    transform 220ms ease;
+	transition:
+		color 180ms ease,
+		border-color 180ms ease,
+		transform 220ms ease;
 }
 
 .contact-link-value {
-  transition: background-size 220ms ease;
+	transition: background-size 220ms ease;
 }
 
 .contact-link:hover .contact-link-icon,
 .contact-link:focus-visible .contact-link-icon {
-  transform: translateY(-1px);
+	transform: translateY(-1px);
 }
 
 .interactive-underline:hover,
 .interactive-underline:focus-visible,
 .contact-link:hover .contact-link-value,
 .contact-link:focus-visible .contact-link-value {
-  background-size: 100% 1px;
+	background-size: 100% 1px;
 }
 
 .interactive-underline:hover,
 .interactive-underline:focus-visible {
-  transform: translateY(-1px);
+	transform: translateY(-1px);
 }
 
 @keyframes reveal-enter {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes reveal-enter-figure {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.985);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(16px) scale(0.985);
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 @media (pointer: coarse) {
-  .cursor-glow {
-    display: none;
-  }
+	.cursor-glow {
+		display: none;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+	html {
+		scroll-behavior: auto;
+	}
 
-  .cursor-glow {
-    display: none;
-  }
+	.cursor-glow {
+		display: none;
+	}
 
-  .motion-reveal,
-  .motion-reveal-figure {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
+	.motion-reveal,
+	.motion-reveal-figure {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
 
-  .interactive-underline,
-  .contact-link,
-  .contact-link-icon,
-  .contact-link-value {
-    transition: none;
-  }
+	.interactive-underline,
+	.contact-link,
+	.contact-link-icon,
+	.contact-link-value {
+		transition: none;
+	}
 
-  .interactive-underline:hover,
-  .interactive-underline:focus-visible,
-  .contact-link:hover,
-  .contact-link:focus-visible,
-  .contact-link:hover .contact-link-icon,
-  .contact-link:focus-visible .contact-link-icon {
-    transform: none;
-  }
+	.interactive-underline:hover,
+	.interactive-underline:focus-visible,
+	.contact-link:hover,
+	.contact-link:focus-visible,
+	.contact-link:hover .contact-link-icon,
+	.contact-link:focus-visible .contact-link-icon {
+		transform: none;
+	}
 }
 
 @utility page-frame {
-  margin-inline: auto;
-  width: min(calc(100% - (var(--space-gutter) * 2)), var(--layout-wide));
+	margin-inline: auto;
+	width: min(calc(100% - (var(--space-gutter) * 2)), var(--layout-wide));
 }

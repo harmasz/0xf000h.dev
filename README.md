@@ -28,7 +28,9 @@ pnpm dev
 Useful project commands:
 
 - `pnpm dev` starts the local development server.
-- `pnpm lint` runs ESLint.
+- `pnpm lint` runs Biome lint checks.
+- `pnpm format` formats supported files with Biome.
+- `pnpm check` validates lint and formatting with Biome.
 - `pnpm build` validates the production build.
 - `pnpm start` serves the production build locally.
 
