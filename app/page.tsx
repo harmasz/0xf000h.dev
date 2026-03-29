@@ -52,32 +52,32 @@ const contactItems: ReadonlyArray<ContactItem> = [
 	{
 		icon: Github,
 		label: "GitHub",
-		href: "https://github.com/harmasz",
+		href: siteConfig.socials.github,
 		value: "harmasz",
 	},
 	{
 		icon: Linkedin,
 		label: "LinkedIn",
-		href: "https://www.linkedin.com/in/piotr-harmasz/",
+		href: siteConfig.socials.linkedin,
 		value: "piotr-harmasz",
 	},
 	{
 		icon: Twitter,
 		label: "X",
-		href: "https://x.com/phrm0",
-		value: "@phrm0",
+		href: siteConfig.socials.x,
+		value: siteConfig.socials.xHandle,
 	},
 	{
 		icon: Mail,
 		label: "Email",
-		href: "mailto:0xf000h@gmail.com",
-		value: "0xf000h@gmail.com",
+		href: `mailto:${siteConfig.email}`,
+		value: siteConfig.email,
 	},
 ];
 
 const heroMeta: ReadonlyArray<HeroMetaItem> = [
-	{ label: "Role", value: "Product Lead / Builder" },
-	{ label: "Base", value: "Wrocław, Poland" },
+	{ label: "Role", value: siteConfig.role },
+	{ label: "Base", value: siteConfig.location },
 ];
 
 const helpItems: ReadonlyArray<HelpItem> = [
