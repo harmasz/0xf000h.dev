@@ -23,4 +23,6 @@ This repository is the canonical source for [0xf000h.dev](https://0xf000h.dev). 
 
 - Prefer conventional commits.
 - Use branch names such as `docs/*`, `feat/*`, and `chore/*`.
+- Prefer ready-for-review pull requests by default; use draft PRs only when explicitly requested.
+- Pull request titles should follow the repository's normal naming conventions and should not include agent/tool prefixes such as `[codex]`.
 - Assume the project will be deployed on Vercel, but do not lock in implementation details before they are requested.
