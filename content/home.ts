@@ -180,7 +180,7 @@ export const homePageContent = {
 		},
 		paragraphs: [
 			"Companies rarely need more ideas. They need better judgment, clearer priorities, and tighter feedback loops between product decisions and what actually gets built.",
-			"That&apos;s the space I tend to operate in across product leadership, software, analytics, and AI, helping teams move faster without losing depth, and scale without losing focus.",
+			"That's the space I tend to operate in across product leadership, software, analytics, and AI, helping teams move faster without losing depth, and scale without losing focus.",
 		],
 	},
 	contact: {
