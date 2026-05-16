@@ -1,6 +1,5 @@
-import { Menu } from "lucide-react";
-
 import { ThemeToggle } from "@/components/theme-toggle";
+import { MenuIcon } from "@/components/ui/icons";
 import type { NavigationItem } from "@/content/home";
 
 type SiteHeaderProps = Readonly<{
@@ -15,7 +14,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
 				style={{ animationDelay: "40ms" }}
 			>
 				<summary className="flex w-fit list-none items-center gap-2 rounded-full border border-border/70 bg-surface/88 px-4 py-2.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground shadow-[var(--shadow-soft)] marker:hidden">
-					<Menu className="size-4" strokeWidth={1.8} />
+					<MenuIcon className="size-4" strokeWidth={1.8} />
 					Menu
 				</summary>
 
