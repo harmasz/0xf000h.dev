@@ -18,6 +18,8 @@ const monoFont = Geist_Mono({
 	variable: "--font-code",
 });
 
+const shouldRenderVercelInsights = Boolean(process.env.VERCEL_ENV);
+
 export const metadata: Metadata = {
 	applicationName: siteConfig.name,
 	title: {
@@ -89,8 +91,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				>
 					{children}
 				</ThemeProvider>
-				<Analytics />
-				<SpeedInsights />
+				{shouldRenderVercelInsights ? (
+					<>
+						<Analytics />
+						<SpeedInsights />
+					</>
+				) : null}
 			</body>
 		</html>
 	);
