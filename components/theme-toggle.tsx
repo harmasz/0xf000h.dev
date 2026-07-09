@@ -4,12 +4,13 @@ import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
+import { MonitorIcon, MoonIcon, SunIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 const themeOptions = [
-	{ label: "System", value: "system" },
-	{ label: "Light", value: "light" },
-	{ label: "Dark", value: "dark" },
+	{ Icon: MonitorIcon, label: "System", value: "system" },
+	{ Icon: SunIcon, label: "Light", value: "light" },
+	{ Icon: MoonIcon, label: "Dark", value: "dark" },
 ] as const;
 
 const emptySubscribe = () => () => {};
@@ -30,22 +31,26 @@ export function ThemeToggle() {
 				<legend className="sr-only">Theme switcher</legend>
 				{themeOptions.map((option) => {
 					const isActive = option.value === activeTheme;
+					const label = `Use ${option.label.toLowerCase()} theme`;
 
 					return (
 						<Button
 							key={option.value}
+							aria-label={label}
 							aria-pressed={isActive}
 							className={cn(
-								"min-w-16 rounded-full px-3.5",
+								"size-8 rounded-full p-0",
 								isActive &&
 									"border-transparent bg-foreground text-background hover:bg-foreground",
 							)}
 							onClick={() => setTheme(option.value)}
 							size="sm"
+							title={label}
 							type="button"
 							variant={isActive ? "default" : "ghost"}
 						>
-							{option.label}
+							<option.Icon className="size-4" strokeWidth={1.8} />
+							<span className="sr-only">{option.label}</span>
 						</Button>
 					);
 				})}
