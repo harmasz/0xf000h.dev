@@ -9,7 +9,7 @@
   <img alt="React" src="https://img.shields.io/badge/React-19-111111?style=for-the-badge&logo=react&logoColor=61DAFB">
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-111111?style=for-the-badge&logo=typescript&logoColor=3178C6">
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-4-111111?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8">
-  <img alt="pnpm" src="https://img.shields.io/badge/pnpm-10-111111?style=for-the-badge&logo=pnpm&logoColor=F69220">
+  <img alt="pnpm" src="https://img.shields.io/badge/pnpm-11-111111?style=for-the-badge&logo=pnpm&logoColor=F69220">
 </p>
 
 ![Homepage screenshot](./screenshot.png)
@@ -31,7 +31,9 @@ Useful project commands:
 - `pnpm lint` runs Biome lint checks.
 - `pnpm format` formats supported files with Biome.
 - `pnpm check` validates lint and formatting with Biome.
+- `pnpm typecheck` validates TypeScript types.
 - `pnpm build` validates the production build.
+- `pnpm verify` runs all repository checks in sequence.
 - `pnpm start` serves the production build locally.
 
 ## Notes
