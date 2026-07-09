@@ -8,7 +8,7 @@ type SiteHeaderProps = Readonly<{
 
 export function SiteHeader({ navigation }: SiteHeaderProps) {
 	return (
-		<header className="flex items-start justify-between gap-6">
+		<header className="flex items-start justify-between gap-6 md:items-center">
 			<details
 				className="motion-reveal group w-full md:hidden"
 				style={{ animationDelay: "40ms" }}

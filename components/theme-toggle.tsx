@@ -27,7 +27,7 @@ export function ThemeToggle() {
 
 	return (
 		<div className="inline-flex items-center gap-2 rounded-full border border-border/55 bg-surface/48 p-1 shadow-[0_16px_34px_-30px_rgb(15_23_42_/_0.16)] backdrop-blur-[2px] dark:shadow-[0_18px_40px_-30px_rgb(2_6_23_/_0.48)]">
-			<fieldset className="inline-flex min-w-0 items-center gap-1 border-0 p-0">
+			<fieldset className="inline-flex min-w-0 items-center gap-0.5 border-0 p-0">
 				<legend className="sr-only">Theme switcher</legend>
 				{themeOptions.map((option) => {
 					const isActive = option.value === activeTheme;
@@ -39,9 +39,9 @@ export function ThemeToggle() {
 							aria-label={label}
 							aria-pressed={isActive}
 							className={cn(
-								"size-8 rounded-full p-0",
+								"size-7 rounded-full p-0",
 								isActive &&
-									"border-transparent bg-foreground text-background hover:bg-foreground",
+									"border-transparent bg-foreground text-background shadow-none hover:bg-foreground",
 							)}
 							onClick={() => setTheme(option.value)}
 							size="sm"
@@ -49,7 +49,7 @@ export function ThemeToggle() {
 							type="button"
 							variant={isActive ? "default" : "ghost"}
 						>
-							<option.Icon className="size-4" strokeWidth={1.8} />
+							<option.Icon className="size-3.5" strokeWidth={1.65} />
 							<span className="sr-only">{option.label}</span>
 						</Button>
 					);

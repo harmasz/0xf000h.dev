@@ -48,9 +48,9 @@ export function MonitorIcon(props: IconProps) {
 			viewBox="0 0 24 24"
 			{...props}
 		>
-			<rect height="14" rx="2" width="20" x="2" y="3" />
-			<path d="M8 21h8" />
-			<path d="M12 17v4" />
+			<rect height="11" rx="1.5" width="16" x="4" y="5" />
+			<path d="M9.5 19h5" />
+			<path d="M12 16v3" />
 		</svg>
 	);
 }
