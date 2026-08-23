@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
@@ -12,7 +13,7 @@ export const size = {
 	height: 630,
 };
 
-const portraitPath = new URL("../public/profile/me-hero.jpg", import.meta.url);
+const portraitPath = join(process.cwd(), "public", "profile", "me-hero.jpg");
 
 export default async function OpenGraphImage() {
 	const portraitBuffer = await readFile(portraitPath);
