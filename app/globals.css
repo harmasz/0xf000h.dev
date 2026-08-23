@@ -17,7 +17,6 @@
 	--text-lede: clamp(1.05rem, 0.98rem + 0.28vw, 1.22rem);
 	--space-gutter: clamp(1.25rem, 0.85rem + 1.1vw, 2.5rem);
 	--space-section: clamp(4.5rem, 3.2rem + 3vw, 7rem);
-	--layout-content: 44rem;
 	--layout-wide: 78rem;
 
 	--radius-sm: 0.3rem;

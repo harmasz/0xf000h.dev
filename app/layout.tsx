@@ -47,26 +47,12 @@ export const metadata: Metadata = {
 		description: siteConfig.description,
 		siteName: siteConfig.name,
 		locale: "en_US",
-		images: [
-			{
-				url: "/opengraph-image",
-				width: 1200,
-				height: 630,
-				alt: `${siteConfig.author} - ${siteConfig.role}`,
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: `${siteConfig.author} | ${siteConfig.role}`,
 		description: siteConfig.description,
 		creator: siteConfig.socials.xHandle,
-		images: [
-			{
-				url: "/opengraph-image",
-				alt: `${siteConfig.author} - ${siteConfig.role}`,
-			},
-		],
 	},
 	category: "technology",
 };
