@@ -65,7 +65,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 						alt={hero.image.alt}
 						className="object-cover object-[50%_24%]"
 						fill
-						priority
+						preload
 						sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 15rem, 72vw"
 						src={hero.image.src}
 					/>
