@@ -101,12 +101,12 @@ body {
 	background: color-mix(in oklab, var(--accent) 24%, transparent);
 }
 
-main {
+.site-shell {
 	position: relative;
 	isolation: isolate;
 }
 
-main::before {
+.site-shell::before {
 	position: absolute;
 	inset: 0;
 	background-image:

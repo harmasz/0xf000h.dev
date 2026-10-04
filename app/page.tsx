@@ -12,21 +12,23 @@ export default function HomePage() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<main
-			className="min-h-screen overflow-hidden py-[var(--space-section)]"
+		<div
+			className="site-shell min-h-screen overflow-hidden py-[var(--space-section)]"
 			id="top"
 		>
 			<CursorGlow />
 
 			<div className="page-frame relative z-10 space-y-16 sm:space-y-20 lg:space-y-24">
 				<SiteHeader navigation={homePageContent.navigation} />
-				<HeroSection hero={homePageContent.hero} />
-				<HelpSection section={homePageContent.help} />
-				<ExperienceSection section={homePageContent.portfolio} />
-				<AboutSection section={homePageContent.about} />
-				<ContactSection section={homePageContent.contact} />
+				<main className="space-y-16 sm:space-y-20 lg:space-y-24">
+					<HeroSection hero={homePageContent.hero} />
+					<HelpSection section={homePageContent.help} />
+					<ExperienceSection section={homePageContent.portfolio} />
+					<AboutSection section={homePageContent.about} />
+					<ContactSection section={homePageContent.contact} />
+				</main>
 				<SiteFooter currentYear={currentYear} footer={homePageContent.footer} />
 			</div>
-		</main>
+		</div>
 	);
 }
