@@ -66,7 +66,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 						className="object-cover object-[50%_24%]"
 						fill
 						preload
-						sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 15rem, 72vw"
+						sizes="(min-width: 1024px) 18.5rem, (min-width: 768px) 17rem, min(78vw, 15rem)"
 						src={hero.image.src}
 					/>
 					<div className="absolute inset-0 bg-linear-to-t from-background/28 via-transparent to-transparent" />
