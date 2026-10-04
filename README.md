@@ -41,4 +41,7 @@ Useful project commands:
 ## Notes
 
 - Deployments are intended for Vercel.
+- The legacy `0xf000h.dev` host permanently redirects to `harmasz.dev` through `next.config.ts`, preserving paths and query strings.
+- CI runs on pull requests, pushes to `main`, and weekly. It checks dependencies for high/critical advisories alongside the code checks.
+- Dependabot checks npm dependencies and GitHub Actions weekly. Automatic security-update PRs and the required `Verify` check on `main` are managed in GitHub repository settings.
 - Agent workflow and repository collaboration rules live in [AGENTS.md](./AGENTS.md).
