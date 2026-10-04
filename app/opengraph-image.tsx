@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
+import { homePageContent } from "@/content/home";
 import { siteConfig } from "@/lib/site";
 
 export const alt = `${siteConfig.author} - ${siteConfig.role}`;
@@ -13,7 +14,11 @@ export const size = {
 	height: 630,
 };
 
-const portraitPath = join(process.cwd(), "public", "profile", "me-hero.jpg");
+const portraitPath = join(
+	process.cwd(),
+	"public",
+	homePageContent.hero.image.src,
+);
 
 export default async function OpenGraphImage() {
 	const portraitBuffer = await readFile(portraitPath);
@@ -74,7 +79,7 @@ export default async function OpenGraphImage() {
 							letterSpacing: "-0.055em",
 						}}
 					>
-						I help SaaS companies turn product clarity into growth.
+						{homePageContent.hero.title}
 					</div>
 
 					<div
@@ -86,9 +91,7 @@ export default async function OpenGraphImage() {
 							color: "rgb(100, 116, 139)",
 						}}
 					>
-						I work across product leadership, systems, and implementation to
-						help teams make better bets, ship with more focus, and build
-						products that support real business outcomes.
+						{homePageContent.hero.description}
 					</div>
 
 					<div
