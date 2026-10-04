@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is the canonical source for [0xf000h.dev](https://0xf000h.dev). It replaced the previous site and should be treated as the current production codebase.
+This repository is the canonical source for [harmasz.dev](https://harmasz.dev). It replaced the previous site and should be treated as the current production codebase.
 
 ## Operating Principles
 

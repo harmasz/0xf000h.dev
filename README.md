@@ -1,4 +1,4 @@
-# 0xf000h.dev
+# harmasz.dev
 
 <p align="center">
   Personal site for Piotr Harmasz.
@@ -16,7 +16,7 @@
 
 ## Overview
 
-This repository contains the current production codebase for [0xf000h.dev](https://0xf000h.dev), a personal site built with Next.js App Router, TypeScript, and Tailwind CSS.
+This repository contains the current production codebase for [harmasz.dev](https://harmasz.dev), a personal site built with Next.js App Router, TypeScript, and Tailwind CSS.
 
 ## Local Development
 
