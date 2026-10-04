@@ -35,8 +35,11 @@ Useful project commands:
 - `pnpm check` validates lint and formatting with Biome.
 - `pnpm typecheck` validates TypeScript types.
 - `pnpm build` validates the production build.
+- `pnpm test:smoke` checks the production site with Chromium (run `pnpm build` first).
 - `pnpm verify` runs all repository checks in sequence.
 - `pnpm start` serves the production build locally.
+
+Install the smoke-test browser once with `pnpm exec playwright install chromium` before running `pnpm verify` or `pnpm test:smoke`. The tests start and stop their own production server on `127.0.0.1:3100`; leave that port free. They cover page landmarks, social metadata, mobile navigation, theme persistence, domain redirects, and crawler endpoints.
 
 ## Notes
 
