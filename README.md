@@ -20,6 +20,8 @@ This repository contains the current production codebase for [harmasz.dev](https
 
 ## Local Development
 
+Use Node.js 24 (declared in `.node-version`) and pnpm 11.10.0 (declared in `package.json`). CI reads the same Node version file, and Vercel uses the `24.x` package engine.
+
 ```bash
 pnpm install
 pnpm dev
@@ -33,10 +35,16 @@ Useful project commands:
 - `pnpm check` validates lint and formatting with Biome.
 - `pnpm typecheck` validates TypeScript types.
 - `pnpm build` validates the production build.
+- `pnpm test:smoke` checks the production site with Chromium (run `pnpm build` first).
 - `pnpm verify` runs all repository checks in sequence.
 - `pnpm start` serves the production build locally.
+
+Install the smoke-test browser once with `pnpm exec playwright install chromium` before running `pnpm verify` or `pnpm test:smoke`. The tests start and stop their own production server on `127.0.0.1:3100`; leave that port free. They cover page landmarks, social metadata, mobile navigation, theme persistence, domain redirects, and crawler endpoints.
 
 ## Notes
 
 - Deployments are intended for Vercel.
+- The legacy `0xf000h.dev` host permanently redirects to `harmasz.dev` through `next.config.ts`, preserving paths and query strings.
+- CI runs on pull requests, pushes to `main`, and weekly. It checks dependencies for high/critical advisories alongside the code checks.
+- Dependabot checks npm dependencies and GitHub Actions weekly. Automatic security-update PRs and the required `Verify` check on `main` are managed in GitHub repository settings.
 - Agent workflow and repository collaboration rules live in [AGENTS.md](./AGENTS.md).
